@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="ru">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Espada — дизайн-лаборатория</title><link rel="stylesheet" href="lab.css?v=8"><link rel="icon" href="assets/knight-light.jpg"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Espada — дизайн-лаборатория</title><link rel="stylesheet" href="lab.css?v=9"><link rel="icon" href="assets/knight-light.jpg"></head>
 <body>
-<header class="lab-header"><a class="lab-brand" href="lab.html">espada<span> / lab</span><span class="version">07</span></a><span class="lab-subtitle">Пространство для экспериментов</span><button id="audit-open">Разбор интерфейса <span>↗</span></button></header>
+<header class="lab-header"><a class="lab-brand" href="lab.html">espada<span> / lab</span><span class="version">08</span></a><span class="lab-subtitle">Пространство для экспериментов</span><button id="audit-open">Разбор интерфейса <span>↗</span></button></header>
 <main class="workspace">
 <aside class="sidebar">
 <div class="eyebrow">НАПРАВЛЕНИЕ</div><h1>Один продукт.<br> Разные ощущения.</h1><p class="muted intro">Сравниваем один сценарий ученика в разных интерфейсах.</p>
 <div class="variants" aria-label="Варианты дизайна">
+<button class="variant" data-variant="j" aria-pressed="false"><span class="variant-letter">J</span><span><strong>Дуо</strong><small>Duolingo · Идём по игровому пути</small></span><span class="swatch" style="background:#58cc02"></span></button>
 <button class="variant active" data-variant="i" aria-pressed="true"><span class="variant-letter">I</span><span><strong>Ясно</strong><small>Родная Espada · Маршрут и прогресс</small></span><span class="swatch clear-green"></span></button>
 <button class="variant" data-variant="d" aria-pressed="false"><span class="variant-letter">D</span><span><strong>Эврика</strong><small>Ярко. Наглядно. Интерактивно.</small></span><span class="swatch lime"></span></button>
 <button class="variant" data-variant="h" aria-pressed="false"><span class="variant-letter">H</span><span><strong>Атлас</strong><small>Карта знаний · Khan Academy</small></span><span class="swatch jade"></span></button>
@@ -36,4 +37,4 @@
 <article><span class="priority">03 · СЛЕДОМ</span><h3>Один однозначный следующий шаг</h3><p>В уроке одновременно встречаются «Понятно, идём дальше» и «Далее». Два близких действия требуют лишнего толкования.</p><strong>В вариантах:</strong><p>Одна основная кнопка, счётчик частей и явный переход к упражнениям. Подсказка не конкурирует с проверкой ответа.</p><small>CourseLibrary.tsx → CourseReader</small></article>
 <article><span class="priority">04 · СОХРАНИТЬ РАЗДЕЛЕНИЕ</span><h3>Прогресс должен объяснять результат</h3><p>В продукте уже различаются активность, чтение, самостоятельные ответы и оценка учителя. В новом дизайне важно не свести их к одному красивому проценту.</p><strong>В вариантах:</strong><p>Отдельные результаты практики, отдельная оценка учителя. Завершение чтения не выдаётся за освоение темы.</p><small>Reports.tsx → Progress; LevelCard.tsx</small></article>
 </div><div class="audit-test"><h3>Как сравнивать</h3><p>Пройдите в каждом варианте один путь: найти задание → прочитать тему → ошибиться → взять подсказку → закончить практику → найти результат. Смотрите, где приходится останавливаться и думать о навигации. Отдельно проверьте телефон и уменьшение анимаций.</p><p><strong>Начальный выбор — B:</strong> меньше визуальной конкуренции и быстрее доступ к заданию. A сохраняет больше текущего характера; C делает последовательность занятий заметнее. Кабинеты учителя и родителя — следующий самостоятельный этап.</p></div></dialog>
-<script src="lab.js?v=8"></script></body></html>
+<script src="lab.js?v=9"></script></body></html>
