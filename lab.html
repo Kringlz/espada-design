@@ -1,13 +1,12 @@
 <!doctype html>
 <html lang="ru">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Espada — дизайн-лаборатория</title><link rel="stylesheet" href="lab.css?v=10"><link rel="icon" href="assets/knight-light.jpg"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Espada — дизайн-лаборатория</title><link rel="stylesheet" href="lab.css?v=9"><link rel="icon" href="assets/knight-light.jpg"></head>
 <body>
-<header class="lab-header"><a class="lab-brand" href="lab.html">espada<span> / lab</span><span class="version">09</span></a><span class="lab-subtitle">Пространство для экспериментов</span><button id="audit-open">Разбор интерфейса <span>↗</span></button></header>
+<header class="lab-header"><a class="lab-brand" href="lab.html">espada<span> / lab</span><span class="version">08</span></a><span class="lab-subtitle">Пространство для экспериментов</span><button id="audit-open">Разбор интерфейса <span>↗</span></button></header>
 <main class="workspace">
 <aside class="sidebar">
 <div class="eyebrow">НАПРАВЛЕНИЕ</div><h1>Один продукт.<br> Разные ощущения.</h1><p class="muted intro">Сравниваем один сценарий ученика в разных интерфейсах.</p>
 <div class="variants" aria-label="Варианты дизайна">
-<button class="variant" data-variant="k" aria-pressed="false"><span class="variant-letter">K</span><span><strong>Espada</strong><small>Свой путь · Видео и умная тренировка</small></span><span class="swatch" style="background:#315b45"></span></button>
 <button class="variant" data-variant="j" aria-pressed="false"><span class="variant-letter">J</span><span><strong>Дуо</strong><small>Duolingo · Идём по игровому пути</small></span><span class="swatch" style="background:#58cc02"></span></button>
 <button class="variant active" data-variant="i" aria-pressed="true"><span class="variant-letter">I</span><span><strong>Ясно</strong><small>Родная Espada · Маршрут и прогресс</small></span><span class="swatch clear-green"></span></button>
 <button class="variant" data-variant="d" aria-pressed="false"><span class="variant-letter">D</span><span><strong>Эврика</strong><small>Ярко. Наглядно. Интерактивно.</small></span><span class="swatch lime"></span></button>
@@ -21,8 +20,7 @@
 </div>
 <div class="direction-note"><span class="eyebrow">ПРОВЕРЯЕМ ГИПОТЕЗУ</span><p id="hypothesis"></p><a id="direction-reference" class="reference-link" target="_blank" rel="noopener" hidden></a></div>
 <div class="screen-label"><span class="eyebrow">ЭКРАНЫ</span><span id="screen-count">01 / 05</span></div>
-<nav class="screen-nav" aria-label="Экраны прототипа"><button data-screen="today" class="active">01 <span>Сегодня</span></button><button data-screen="training" hidden><span>02</span> Тренировка</button>
-<button data-screen="learn">02 <span>Каталог тем</span></button><button data-screen="lesson">03 <span>Урок</span></button><button data-screen="practice">04 <span>Практика</span></button><button data-screen="progress">05 <span>Мой прогресс</span></button></nav>
+<nav class="screen-nav" aria-label="Экраны прототипа"><button data-screen="today" class="active">01 <span>Сегодня</span></button><button data-screen="learn">02 <span>Каталог тем</span></button><button data-screen="lesson">03 <span>Урок</span></button><button data-screen="practice">04 <span>Практика</span></button><button data-screen="progress">05 <span>Мой прогресс</span></button></nav>
 <label class="eyebrow note-label" for="notes">ЗАМЕТКА К ЭТОМУ ЭКРАНУ</label><textarea id="notes" placeholder="Что оставить? Что изменить?" rows="3"></textarea><div class="note-footer"><span id="save-status" aria-live="polite">Хранится в этом браузере</span><button id="export">Экспорт заметок</button></div>
 <p class="sandbox-note">Интерактивный прототип · учебные данные.<br>Основное приложение не меняется.<br><a class="reference-link" href="https://brilliant.org/math/" target="_blank" rel="noopener">Референс D: Brilliant ↗</a></p>
 </aside>
@@ -39,4 +37,4 @@
 <article><span class="priority">03 · СЛЕДОМ</span><h3>Один однозначный следующий шаг</h3><p>В уроке одновременно встречаются «Понятно, идём дальше» и «Далее». Два близких действия требуют лишнего толкования.</p><strong>В вариантах:</strong><p>Одна основная кнопка, счётчик частей и явный переход к упражнениям. Подсказка не конкурирует с проверкой ответа.</p><small>CourseLibrary.tsx → CourseReader</small></article>
 <article><span class="priority">04 · СОХРАНИТЬ РАЗДЕЛЕНИЕ</span><h3>Прогресс должен объяснять результат</h3><p>В продукте уже различаются активность, чтение, самостоятельные ответы и оценка учителя. В новом дизайне важно не свести их к одному красивому проценту.</p><strong>В вариантах:</strong><p>Отдельные результаты практики, отдельная оценка учителя. Завершение чтения не выдаётся за освоение темы.</p><small>Reports.tsx → Progress; LevelCard.tsx</small></article>
 </div><div class="audit-test"><h3>Как сравнивать</h3><p>Пройдите в каждом варианте один путь: найти задание → прочитать тему → ошибиться → взять подсказку → закончить практику → найти результат. Смотрите, где приходится останавливаться и думать о навигации. Отдельно проверьте телефон и уменьшение анимаций.</p><p><strong>Начальный выбор — B:</strong> меньше визуальной конкуренции и быстрее доступ к заданию. A сохраняет больше текущего характера; C делает последовательность занятий заметнее. Кабинеты учителя и родителя — следующий самостоятельный этап.</p></div></dialog>
-<script src="lab.js?v=10"></script></body></html>
+<script src="lab.js?v=9"></script></body></html>
