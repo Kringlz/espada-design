@@ -18,12 +18,12 @@ async function clarityEnableAudio(){
 }
 function clarityStopAudio(){const a=clarityAudio;clearInterval(a.timer);a.timer=null;a.nodes.forEach(n=>{try{n.stop()}catch{}});a.nodes.clear()}
 function claritySyncAudio(){
- const a=clarityAudio,play=['i','j'].includes(variant)&&a.music&&!document.hidden&&a.context?.state==='running';
- if(!play){if(a.timer||!['i','j'].includes(variant)||document.hidden)clarityStopAudio();return}if(a.timer)return;
+ const a=clarityAudio,play=['i','j','l'].includes(variant)&&a.music&&!(variant==='l'&&screen==='lesson'&&referenceLessonMode==='video')&&!document.hidden&&a.context?.state==='running';
+ if(!play){if(a.timer||!['i','j','l'].includes(variant)||document.hidden)clarityStopAudio();return}if(a.timer)return;
  a.nextBeat=a.context.currentTime+.12;a.beat=0;
  // A slow pentatonic kalimba phrase above soft sustained fifths, at 75 bpm.
  const melody=[523.25,0,659.25,587.33,0,440,0,392,440,0,587.33,659.25,0,523.25,0,0];
- const schedule=()=>{if(document.hidden||!['i','j'].includes(variant)||!a.music){clarityStopAudio();return}while(a.nextBeat<a.context.currentTime+.3){const i=a.beat%melody.length;if(melody[i])clarityTone(melody[i],a.nextBeat,1.6,.10);if(i%8===0){const root=i===0?130.81:110;clarityTone(root,a.nextBeat,5.8,.055);clarityTone(root*1.5,a.nextBeat,5.8,.03)}a.nextBeat+=.8;a.beat++}};
+ const schedule=()=>{if(document.hidden||!['i','j','l'].includes(variant)||!a.music){clarityStopAudio();return}while(a.nextBeat<a.context.currentTime+.3){const i=a.beat%melody.length;if(melody[i])clarityTone(melody[i],a.nextBeat,1.6,.10);if(i%8===0){const root=i===0?130.81:110;clarityTone(root,a.nextBeat,5.8,.055);clarityTone(root*1.5,a.nextBeat,5.8,.03)}a.nextBeat+=.8;a.beat++}};
  schedule();a.timer=setInterval(schedule,180);
 }
 function clarityRefreshAudio(){
@@ -39,9 +39,9 @@ async function clarityToggleAudio(key){const a=clarityAudio;if(!a[key]&&!await c
 document.addEventListener('input',event=>{if(event.target.id!=='i-volume')return;const a=clarityAudio;a.volume=Number(event.target.value)/100;document.getElementById('i-volume-value').textContent=Math.round(a.volume*100)+'%';if(a.master)a.master.gain.setTargetAtTime(a.volume,a.context.currentTime,.04);clarityRefreshAudio()});
 // Capture before a screen re-render so the click's selected answer is still available.
 document.addEventListener('click',event=>{
- const a=clarityAudio;if(!['i','j'].includes(variant)||!a.effects||document.hidden)return;const b=event.target.closest('button, .i-contents a, .i-reveal summary');if(!b||b.disabled||b.dataset.action?.startsWith('clarity-music')||b.dataset.action?.startsWith('clarity-effects'))return;
+ const a=clarityAudio;if(!['i','j','l'].includes(variant)||!a.effects||document.hidden)return;const b=event.target.closest('button, .i-contents a, .i-reveal summary');if(!b||b.disabled||b.dataset.action?.startsWith('clarity-music')||b.dataset.action?.startsWith('clarity-effects'))return;
  if(a.context?.state!=='running'){a.context?.resume().catch(()=>{});return}
  const now=a.context.currentTime;if(b.dataset.action==='check'&&choice!==null){if(choice===activeQuestion().correct){[523.25,659.25,783.99].forEach((f,i)=>clarityTone(f,now+i*.1,.45,.12))}else{clarityTone(392,now,.3,.1);clarityTone(349.23,now+.14,.4,.08)}}else clarityTone(587.33,now,.10,.09);
 },true);
-document.addEventListener('visibilitychange',()=>{if(document.hidden){clarityStopAudio();clarityAudio.context?.suspend().catch(()=>{})}else if(['i','j'].includes(variant)&&(clarityAudio.music||clarityAudio.effects)){clarityAudio.context?.resume().then(()=>{claritySyncAudio();clarityRefreshAudio()}).catch(()=>{})}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){clarityStopAudio();clarityAudio.context?.suspend().catch(()=>{})}else if(['i','j','l'].includes(variant)&&(clarityAudio.music||clarityAudio.effects)){clarityAudio.context?.resume().then(()=>{claritySyncAudio();clarityRefreshAudio()}).catch(()=>{})}});
 window.addEventListener('pagehide',()=>{clarityStopAudio();clarityAudio.context?.suspend().catch(()=>{})});
